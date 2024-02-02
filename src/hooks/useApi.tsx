@@ -49,9 +49,8 @@ function useApi<T>(route: ApiRoutesId, query: Queries = { page: 1 }): T[] {
           }
         );
 
-
         Promise.all(promises)
-          .then((datas) => setApiDatas(datas))
+          .then((datas) => { setApiDatas(datas) })
           .then((datas) => resolve(datas))
           .catch((err) => reject(err));
       });

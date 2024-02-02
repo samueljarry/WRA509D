@@ -5,6 +5,7 @@ import { ScreensId } from '../constants/ScreensId';
 import { DetailsPage } from '../pages/DetailsPage';
 import HomePage from '../pages/HomePage';
 import { SearchPage } from '../pages/SearchPage';
+import { TeamsPage } from '../pages/TeamsPage';
 
 const Tab = createBottomTabNavigator();
 const Stack = createNativeStackNavigator();
@@ -36,7 +37,7 @@ export const BottomTabs = () => {
           ),
         }}
       />
-      <Tab.Screen name={ScreensId.TEAMS} component={MainView}
+      <Tab.Screen name={ScreensId.TEAMS} component={TeamsPage}
         options={{
           tabBarLabel: 'Équipes',
           tabBarIcon: ({ color, size }) => (

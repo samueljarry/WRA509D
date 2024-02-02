@@ -10,3 +10,17 @@ declare type Stand = {
   standUser: string;
   asset: string;
 }
+
+declare type Character = {
+  name: string;
+  id: string;
+  japaneseName: string;
+  living: boolean;
+  image: string;
+  nationality: string;
+  isHuman: boolean;
+  family: string;
+  chapter: string;
+  catchphrase: string;
+  abilities: string;
+}
