@@ -1,6 +1,6 @@
 import type { NativeStackScreenProps } from '@react-navigation/native-stack';
 import { Stand } from "../hooks/useApi";
-import { ScreensId } from "../constants/ScreensId";
+import { ScreensId } from '../constants/ScreensId';
 import { Box, Image, VStack, Heading, Text, Center } from '@gluestack-ui/themed';
 import { useMemo } from 'react';
 
