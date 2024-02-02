@@ -5,11 +5,11 @@ import { Dimensions, StyleSheet, View } from "react-native";
 import { TouchableOpacity } from 'react-native-gesture-handler';
 import { ApiRoutesId } from "../constants/ApiRoutesId";
 import { ScreensId } from '../constants/ScreensId';
-import { Stand } from "../hooks/useApi";
 
 type Props = {
   stand: Stand;
 };
+
 function StandCard({ stand }: Props) {
   const navigation = useNavigation();
   return (

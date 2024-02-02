@@ -1,4 +1,4 @@
-import { useEffect, useMemo, useState } from "react";
+import { useEffect, useState } from "react";
 import { ApiRoutesId } from "../constants/ApiRoutesId";
 
 type Queries = {
@@ -32,15 +32,16 @@ export type Stand = {
 const ITEM_PER_PAGE_COUNT = 20;
 
 function useApi<T>(route: ApiRoutesId, query: Queries = { page: 1 }): T[] {
-  
+
   const [apiDatas, setApiDatas] = useState<T[]>([]);
+
   useEffect(() => {
-    const getDatas = async () => {
+    const getDatas = async (): Promise<void> => {
       return new Promise((resolve, reject) => {
         const promises = Array.from(
-          { 
+          {
             length: query.page * ITEM_PER_PAGE_COUNT
-          }, 
+          },
           async (_, id) => {
             return await fetch(route + (id + 1))
               .then((res: Response) => res.json())
