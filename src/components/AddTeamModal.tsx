@@ -38,9 +38,9 @@ export const AddTeamModal = forwardRef(({ onClose, showModal }: Props, ref: Forw
   }
 
   const saveTeam = async (): Promise<void> => {
-    console.log(TeamsManager, 'saveteam')
     await TeamsManager.SaveNewTeam();
     onClose();
+    setTeamMembers(Array.from({ length: 6 }));
   }
 
   useEffect(() => {

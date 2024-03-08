@@ -3,16 +3,19 @@ import {
   Button,
   ButtonIcon,
   ButtonText,
+  FlatList,
+  Text,
   View,
 } from '@gluestack-ui/themed';
 import { useEffect, useRef, useState } from 'react';
 import { StyleSheet } from 'react-native';
 import { AddTeamModal } from '../components/AddTeamModal';
-import { Team, TeamsManager } from '../managers/TeamsManager';
+import { Team as TeamType, TeamsManager } from '../managers/TeamsManager';
+import { Team } from '../components/Team';
 
 export const TeamsPage = (): JSX.Element => {
   const [showModal, setShowModal] = useState(false);
-  const [teams, setTeams] = useState<Set<Team>>();
+  const [teams, setTeams] = useState<Array<TeamType>>();
   const ref = useRef();
 
   const createTeam = (): void => {
@@ -55,6 +58,19 @@ export const TeamsPage = (): JSX.Element => {
           <ButtonText color="$white">Créer une équipe</ButtonText>
           <ButtonIcon as={AddIcon} />
         </Button>
+      </View>
+      <View>
+        <FlatList
+          numColumns={1}
+          // contentContainerStyle={styles.container}
+          gap="$4"
+          data={teams}
+          renderItem={(team: Array<Character>) => <Team team={team} />}
+        // onEndReached={() => {
+        //   setPage((prevState) => prevState + 1);
+        // }}
+        // onEndReachedThreshold={0.5}
+        />
       </View>
       <AddTeamModal ref={ref} onClose={() => { setShowModal(false) }} showModal={showModal} />
     </View>
