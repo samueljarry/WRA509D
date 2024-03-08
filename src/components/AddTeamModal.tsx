@@ -18,7 +18,6 @@ import { ForwardedRef, forwardRef, useEffect, useRef, useState } from 'react';
 import Ionicons from 'react-native-vector-icons/Ionicons';
 import { ApiRoutesId } from '../constants/ApiRoutesId';
 import { TeamsManager } from '../managers/TeamsManager';
-import { TeamsAction } from '../utils/TeamsAction';
 import { SearchCharacterModal } from './SearchCharacterModal';
 import { Button, ButtonText, ButtonIcon } from '@gluestack-ui/themed';
 
@@ -38,8 +37,9 @@ export const AddTeamModal = forwardRef(({ onClose, showModal }: Props, ref: Forw
     setSearchModalVisible(true);
   }
 
-  const saveTeam = (): void => {
-    TeamsManager.SaveNewTeam();
+  const saveTeam = async (): Promise<void> => {
+    console.log(TeamsManager, 'saveteam')
+    await TeamsManager.SaveNewTeam();
     onClose();
   }
 
@@ -49,10 +49,10 @@ export const AddTeamModal = forwardRef(({ onClose, showModal }: Props, ref: Forw
       setTeamMembers(updatedTeamMembers);
     }
 
-    TeamsAction.Add(onTeamChange);
+    TeamsManager.OnAddTeammate.add(onTeamChange);
 
     return (): void => {
-      TeamsAction.Remove(onTeamChange);
+      TeamsManager.OnAddTeammate.remove(onTeamChange);
     }
   }, [])
 

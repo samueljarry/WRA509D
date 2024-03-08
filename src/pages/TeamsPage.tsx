@@ -9,7 +9,6 @@ import { useEffect, useRef, useState } from 'react';
 import { StyleSheet } from 'react-native';
 import { AddTeamModal } from '../components/AddTeamModal';
 import { Team, TeamsManager } from '../managers/TeamsManager';
-import { TeamsAction } from '../utils/TeamsAction';
 
 export const TeamsPage = (): JSX.Element => {
   const [showModal, setShowModal] = useState(false);
@@ -28,15 +27,19 @@ export const TeamsPage = (): JSX.Element => {
 
     const onTeamsChange = (): void => {
       setTeams(TeamsManager.Teams);
-      console.log(TeamsManager.Teams)
+      console.log(TeamsManager.Teams, 'teamsmanager')
     }
 
-    TeamsAction.AddOnTeamsChange(onTeamsChange);
+    TeamsManager.OnTeamsUpdate.add(onTeamsChange);
 
     return (): void => {
-      TeamsAction.RemoveOnTeamsChange(onTeamsChange);
+      TeamsManager.OnTeamsUpdate.remove(onTeamsChange);
     }
   }, [])
+
+  useEffect(() => {
+    console.log('teams')
+  }, [teams])
 
   return (
     <View style={styles.pageContainer}>

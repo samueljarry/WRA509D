@@ -5,11 +5,11 @@ export class TeamsAction {
   private static _TeamMembersActionsSet = new Action();
 
   public static Add(func: () => void): void {
-    this._TeamMembersActionsSet.set(func);
+    this._TeamMembersActionsSet.add(func);
   }
 
   public static AddOnTeamsChange(func: () => void): void {
-    this._TeamsActionSet.set(func);
+    this._TeamsActionSet.add(func);
   }
 
   public static Remove(func: () => void): void {
