@@ -8,7 +8,7 @@ type Props = {
 
 export const Team = ({ team }: Props) => {
   return (
-    <View gap="$5" flexDirection="row" flexWrap="wrap" justifyContent="space-evenly">
+    <View gap="$5" flexDirection="row" bg="$coolGray200" flexWrap="wrap" justifyContent="space-evenly" marginBottom="$5" padding="$4" borderRadius="$xl">
       {team.item.map((character: Character | undefined, id: number) => (
         <View
           key={`team${id}`}

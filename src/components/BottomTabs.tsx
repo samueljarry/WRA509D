@@ -6,6 +6,7 @@ import { DetailsPage } from '../pages/DetailsPage';
 import HomePage from '../pages/HomePage';
 import { SearchPage } from '../pages/SearchPage';
 import { TeamsPage } from '../pages/TeamsPage';
+import { SettingsPage } from '../pages/SettingsPage';
 
 const Tab = createBottomTabNavigator();
 const Stack = createNativeStackNavigator();
@@ -42,6 +43,14 @@ export const BottomTabs = () => {
           tabBarLabel: 'Équipes',
           tabBarIcon: ({ color, size }) => (
             <Ionicons name="people" color={color} size={size} />
+          ),
+        }}
+      />
+      <Tab.Screen name={ScreensId.SETTINGS} component={SettingsPage}
+        options={{
+          tabBarLabel: 'Paramètres',
+          tabBarIcon: ({ color, size }) => (
+            <Ionicons name="settings-outline" color={color} size={size} />
           ),
         }}
       />

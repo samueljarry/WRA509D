@@ -3,5 +3,6 @@ export enum ScreensId {
   DETAILS = 'Details',
   HOME = 'Accueil',
   SEARCH = 'Recherche',
-  TEAMS = 'Equipes'
+  TEAMS = 'Equipes',
+  SETTINGS = 'Paramètres',
 }

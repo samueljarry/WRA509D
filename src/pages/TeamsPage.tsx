@@ -30,7 +30,6 @@ export const TeamsPage = (): JSX.Element => {
 
     const onTeamsChange = (): void => {
       setTeams(TeamsManager.Teams);
-      console.log(TeamsManager.Teams, 'teamsmanager')
     }
 
     TeamsManager.OnTeamsUpdate.add(onTeamsChange);
@@ -40,13 +39,9 @@ export const TeamsPage = (): JSX.Element => {
     }
   }, [])
 
-  useEffect(() => {
-    console.log('teams')
-  }, [teams])
-
   return (
     <View style={styles.pageContainer}>
-      <View style={styles.buttonContainer}>
+      <View style={styles.buttonContainer} marginBottom="$5">
         <Button
           gap="$3"
           bg="$primary500"
@@ -62,14 +57,9 @@ export const TeamsPage = (): JSX.Element => {
       <View>
         <FlatList
           numColumns={1}
-          // contentContainerStyle={styles.container}
           gap="$4"
           data={teams}
           renderItem={(team: Array<Character>) => <Team team={team} />}
-        // onEndReached={() => {
-        //   setPage((prevState) => prevState + 1);
-        // }}
-        // onEndReachedThreshold={0.5}
         />
       </View>
       <AddTeamModal ref={ref} onClose={() => { setShowModal(false) }} showModal={showModal} />

@@ -8,7 +8,7 @@
     "icon": "./assets/icon.png",
     "userInterfaceStyle": "light",
     "splash": {
-      "image": "./assets/clebard.jpeg",
+      "image": "./assets/splash.png",
       "resizeMode": "contain",
       "backgroundColor": "#ffffff"
     },
@@ -16,7 +16,9 @@
       [
         "expo-camera",
         {
-          "cameraPermission": "Allow app to access your camera."
+          "cameraPermission": "Allow $(PRODUCT_NAME) to access your camera",
+          "microphonePermission": "Allow $(PRODUCT_NAME) to access your microphone",
+          "recordAudioAndroid": false
         }
       ],
       "expo-router"
@@ -29,13 +31,13 @@
     },
     "android": {
       "adaptiveIcon": {
-        "foregroundImage": "./assets/clebard.jpeg",
+        "foregroundImage": "./assets/splash.png",
         "backgroundColor": "#ffffff"
       }
     },
     "web": {
       "favicon": "./assets/favicon.png",
       "bundler": "metro"
-    }
+    },
   }
 }
